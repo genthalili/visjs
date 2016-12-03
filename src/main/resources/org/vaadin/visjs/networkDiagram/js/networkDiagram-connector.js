@@ -60,8 +60,6 @@ window.org_vaadin_visjs_networkDiagram_NetworkDiagram = function () {
         graph.on('zoom', function (properties) {
             self.onZoom(properties);
         });
-
-        graph.draw();
     };
 
     this.updateOptions = function (o) {
