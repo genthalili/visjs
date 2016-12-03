@@ -4,15 +4,17 @@
 
 window.org_vaadin_visjs_networkDiagram_NetworkDiagram = function () {
 
-    var nodes;
-    var edges;
-    var graph;
+    var nodes = null;
+    var edges = null;
+    var graph = null;
     var options = {"clickToUse": "false"};
-    var container;
+    var container = null;
     var self = this;
 
     this.onStateChange = function () {
-        graph.redraw();
+        if (graph != null) {
+            graph.redraw();
+        }
     };
 
     this.init = function (o) {
@@ -55,7 +57,6 @@ window.org_vaadin_visjs_networkDiagram_NetworkDiagram = function () {
         graph.on('viewChanged', function (properties) {
             self.onViewChanged(properties);
         });
-
         graph.on('zoom', function (properties) {
             self.onZoom(properties);
         });
@@ -65,47 +66,68 @@ window.org_vaadin_visjs_networkDiagram_NetworkDiagram = function () {
 
     this.updateOptions = function (o) {
         options = JSON.parse(o);
-        graph.redraw();
+        if (graph != null) {
+            graph.redraw();
+        }
     };
 
     this.addNodes = function (n) {
-        nodes.add(JSON.parse(n));
+        if (nodes != null) {
+            nodes.add(JSON.parse(n));
+        }
     };
 
     this.addEdges = function (e) {
-        edges.add(JSON.parse(e));
-
+        if (edges != null) {
+            edges.add(JSON.parse(e));
+        }
     };
 
     this.drawConnections = function () {
-        graph.redraw();
+        if (graph != null) {
+            graph.redraw();
+        }
     };
 
     this.removeNode = function (n) {
-        nodes.remove(JSON.parse(n));
+        if (nodes != null) {
+            nodes.remove(JSON.parse(n));
+        }
     };
 
     this.removeEdge = function (e) {
-        edges.remove(JSON.parse(e));
+        if (edges != null) {
+            edges.remove(JSON.parse(e));
+        }
     };
 
     this.updateNode = function (n) {
-        nodes.update(JSON.parse(n));
+        if (nodes != null) {
+            nodes.update(JSON.parse(n));
+        }
     };
 
     this.updateEdge = function (e) {
-        edges.update(JSON.parse(e));
+        if (edges != null) {
+            edges.update(JSON.parse(e));
+        }
     };
 
     this.clearNodes = function () {
-        nodes.clear();
+        if (nodes != null) {
+            nodes.clear();
+        }
     };
 
     this.clearEdges = function () {
-        edges.clear();
+        if (edges != null) {
+            edges.clear();
+        }
     };
 
     this.destroyNetwork = function () {
-        graph.destroyNetwork();
+        if (graph != null) {
+            graph.destroyNetwork();
+        }
     };
 };
